@@ -1,3 +1,3 @@
 # Base
 
-Basic C++ container classes
+Basic C++ container structures
