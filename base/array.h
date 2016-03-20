@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdint.h>
 #include <stdlib.h>
 #include <memory>
@@ -55,14 +57,25 @@ namespace array {
     }
   }
 
-  template<typename T> void grow(Array<T> &array) {
+  template<typename T> void grow(Array<T> &array, uint32_t min_capacity) {
     uint32_t new_capacity = array.capacity * 2 + 8;
+    if (new_capacity < min_capacity) {
+      new_capacity = min_capacity;
+    }
     set_capacity(array, new_capacity);
+  }
+
+  template <typename T> void resize(Array<T> &array, uint32_t new_size) {
+    if (new_size > array.capacity) {
+      grow(array, new_size);
+    }
+
+    array.size = new_size;
   }
 
   template<typename T> inline void push_back(Array<T> &array, T value) {
     if (array.size + 1 > array.capacity) {
-      grow(array);
+      grow(array, array.size + 1);
     }
 
     array.data[array.size++] = value;
