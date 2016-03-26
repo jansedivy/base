@@ -17,6 +17,10 @@ namespace Base {
 
     return hash;
   }
+
+  uint32_t hash_string(const char *string, uint32_t hash=0) {
+    return hash_string((char *)string, hash);
+  }
 };
 
 template <typename F> struct ScopeExit {
