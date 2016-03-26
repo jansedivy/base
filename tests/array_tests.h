@@ -136,7 +136,7 @@ void run_array_tests() {
   }
   {
     Array<int> array;
-    for (int i=0; i<1000; i++) {
+    for (int i = 0; i < 1000; i++) {
       array::push_back(array, i);
     }
     assert(array.size == 1000);
@@ -145,7 +145,7 @@ void run_array_tests() {
   {
     Array<int> array;
     array::reserve(array, 1000);
-    for (int i=0; i<1000; i++) {
+    for (int i = 0; i < 1000; i++) {
       array::push_back(array, i);
     }
     assert(array.size == 1000);
